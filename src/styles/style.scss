@@ -1,0 +1,149 @@
+@use "variables";
+@use "navbar";
+@use "banner";
+@use "section";
+@use "projects";
+
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap");
+
+@media only screen and (max-width: 375px) {
+	body {
+		--fs-title: 5rem;
+		--fs-subheading: 2rem;
+		--fs-nav: 1rem;
+	}
+}
+@media only screen and (max-width: 800px) {
+	.projects-wrapper {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+
+	#project-display-panel {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+
+	.project-info {
+		padding: 1em !important;
+	}
+}
+
+@media (prefers-reduced-motion) {
+	* {
+		animation: none !important;
+	}
+}
+
+html {
+	scroll-padding-top: 4rem;
+	scroll-behavior: smooth;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+body {
+	background-color: var(--color-background);
+	font-family: var(--ff-body);
+}
+
+p {
+	max-width: 60ch;
+	font-size: var(--fs-body);
+	line-height: 1.5;
+	padding: 0 1em;
+	margin-top: 2em;
+}
+
+h2 {
+	font-family: var(--ff-heading);
+	font-size: var(--fs-subheading);
+	--bracket-color: var(--color-faint);
+
+	&::before {
+		content: "[";
+		color: var(--bracket-color);
+		position: relative;
+		right: 1rem;
+	}
+	&::after {
+		content: "]";
+		color: var(--bracket-color);
+		position: relative;
+		left: 1rem;
+	}
+}
+
+// FOOTER
+
+footer {
+	text-align: center;
+	font-size: 0.8rem;
+	color: var(--color-primary-700);
+	margin-bottom: 1em;
+}
+
+/* UTILITY CLASSES */
+
+.flex {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.flex-align {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 1em;
+}
+
+.reverse {
+	flex-wrap: wrap-reverse;
+}
+
+.flex-between {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.color1 {
+	--accent-color: var(--color-accent-200);
+}
+.color2 {
+	--accent-color: var(--color-alt-1);
+}
+.color3 {
+	--accent-color: var(--color-alt-2);
+}
+
+.icon-small {
+	height: 1.2em;
+}
+
+.highlight {
+	background-image: linear-gradient(var(--accent-color), var(--accent-color));
+	background-size: 100% 30%;
+	background-position: 0 100%;
+	transition: background-size 500ms;
+	background-repeat: no-repeat;
+
+	&:hover {
+		background-size: 100% 100%;
+	}
+}

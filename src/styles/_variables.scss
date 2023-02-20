@@ -1,0 +1,26 @@
+:root {
+	--color-primary-900: black;
+	--color-primary-800: #252526;
+	--color-primary-700: #333333;
+	--color-primary-300: #eee;
+	--color-primary-100: #fdfdf7;
+	--color-accent-400: #2490f1;
+	--color-accent-200: #58a9f0;
+	--color-alt-1: #c586c0;
+	--color-alt-2: #d0dc90;
+
+	--color-background: var(--color-primary-100);
+	--color-nav: var(--color-accent-400);
+	--color-background-nav: var(--color-primary-900);
+	--color-faint: var(--color-primary-300);
+
+	--fs-title: 7rem;
+	--fs-subheading: 3rem;
+	--fs-subsubheading: 1.5rem;
+	--fs-nav: 1.3rem;
+	--fs-body: 1.2rem;
+
+	--ff-body: "Encode Sans";
+	--ff-heading: "Encode Sans";
+	--ff-title: "Roboto Mono";
+}

@@ -1,0 +1,41 @@
+// NAVBAR
+
+nav {
+	font-size: var(--fs-nav);
+	font-family: var(--ff-heading);
+	color: var(--color-nav);
+	background-color: var(--color-background-nav);
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.3);
+	z-index: 5;
+
+	& > ul {
+		margin: 0 auto;
+		padding: 0;
+		max-width: 50rem;
+		display: flex;
+		justify-content: space-around;
+		gap: 2rem;
+	}
+
+	li {
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		font-size: var(--fs-nav);
+
+		&:hover {
+			color: white;
+		}
+	}
+
+	a {
+		display: inline-block;
+		padding: 0.5em 0;
+		color: currentColor;
+		text-decoration: none;
+	}
+}
