@@ -1,0 +1,17 @@
+---
+import './Projects.scss';
+import ProjectDisplay from './components/ProjectDisplay.astro';
+import ProjectSidebar from './components/ProjectSidebar.astro';
+import sortedProjects from '@content/sortedProjects';
+---
+
+<!-- Codepen external script -->
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-wrapper">
+    <ProjectSidebar projects={sortedProjects} />
+    <ProjectDisplay projects={sortedProjects} />
+  </div>
+</section>

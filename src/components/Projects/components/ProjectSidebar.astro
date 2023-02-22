@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+const { projects } = Astro.props;
+---
+
+<div class="project-sidebar">
+  <ul>
+    {
+      projects.map((project, i) => (
+        <li id={project.data.id} class={`project-button ${i === 0 ? 'selected' : ''}`}>
+          <img alt={`${project.data.id} icon`} class="icon-small" src={project.data.iconSrc} />
+          <span>{project.data.title}</span>
+        </li>
+      ))
+    }
+  </ul>
+</div>
