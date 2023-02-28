@@ -3,10 +3,34 @@ import GlowButton from './components/GlowButton/GlowButton.astro';
 import NeonButton from './components/NeonButton/NeonButton.astro';
 import RippleButton from './components/RippleButton/RippleButton.astro';
 import ThreeDButton from './components/ThreeDButton/ThreeDButton.astro';
-const size = 3;
+const size = 2;
 ---
 
-<GlowButton size={size}>Glow Button</GlowButton>
-<NeonButton size={size}>Neon Button</NeonButton>
-<RippleButton size={size}>Ripple Button</RippleButton>
-<ThreeDButton size={size}>3D Button</ThreeDButton>
+<style lang="scss">
+  .button-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+
+    .button-display {
+      justify-self: center;
+    }
+
+    .button-text {
+      color: white;
+      font-size: 2rem;
+      align-self: center;
+    }
+  }
+</style>
+
+<div class="button-gallery">
+  <div class="button-display"><GlowButton size={size}>Glow Button</GlowButton></div>
+  <div class="button-text">A button with an animated glowing border effect</div>
+  <div class="button-display"><NeonButton size={size}>Neon Button</NeonButton></div>
+  <div class="button-text">A button with a glowing neon effect</div>
+  <div class="button-display"><RippleButton size={size}>Ripple Button</RippleButton></div>
+  <div class="button-text">A button with a ripple effect on click</div>
+  <div class="button-display"><ThreeDButton size={size}>3D Button</ThreeDButton></div>
+  <div class="button-text">A 3D button, mouse over to try</div>
+</div>
