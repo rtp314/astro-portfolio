@@ -1,6 +1,6 @@
 ---
 id: social
-iconSrc: icons/lock-svgrepo-com.svg
+iconSrc: icons/letter-s-svgrepo-com.svg
 title: Social
 draft: true
 ---

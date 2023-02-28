@@ -1,0 +1,16 @@
+---
+import './NeonButton.css';
+const { size = 1 } = Astro.props;
+---
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.neon');
+  buttons.forEach(button => {
+    const size = Number(button.dataset.size);
+    button.style.setProperty('--size', `${size}rem`);
+  });
+</script>
+
+<button data-size={size} class="neon">
+  <slot />
+</button>

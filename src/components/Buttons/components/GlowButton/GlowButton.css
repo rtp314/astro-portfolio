@@ -1,0 +1,73 @@
+.glowButton {
+  /* button styling */
+  outline: transparent;
+  border: none;
+  padding: 0.6em 1.2em;
+
+  /* animation controls */
+  --size: 1rem;
+  --overflow: 5em;
+  --glow-color: currentColor;
+
+  /* do not change */
+  font-size: var(--size);
+  border-radius: 0.5em;
+  position: relative;
+  font-weight: bold;
+  color: rgb(253, 253, 174);
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+}
+
+.glowContainer {
+  width: calc(100% + var(--overflow));
+  height: calc(100% + var(--overflow));
+  position: absolute;
+  inset: calc(var(--overflow) / -2);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+
+.glowButton:hover .glowContainer {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.glowContainer > rect {
+  stroke: transparent;
+  x: calc(var(--overflow) / 2);
+  y: calc(var(--overflow) / 2);
+  width: calc(100% - var(--overflow));
+  height: calc(100% - var(--overflow));
+  fill: transparent;
+  stroke-dasharray: 20 30;
+}
+
+.glowButton:hover rect {
+  stroke: var(--glow-color);
+  animation: glow-rotate 2s linear infinite;
+}
+
+.glowButton:active rect {
+  stroke-linecap: square;
+  stroke-dasharray: 110 1;
+}
+
+.glowLine {
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+.glowBlur {
+  stroke-width: 1em;
+  filter: blur(1em);
+}
+
+@keyframes glow-rotate {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -100;
+  }
+}

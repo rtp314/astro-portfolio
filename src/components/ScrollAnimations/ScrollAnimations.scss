@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.scroll-animation-container {
+  width: 100%;
+  min-height: 100svh;
+  isolation: isolate;
+  position: relative;
+}
+
+.scroll-animation-page {
+  // general styling
+  display: grid;
+  place-content: center;
+  outline: 1px solid red;
+
+  // scroll-animation specific code below
+  width: 100%;
+}
+
+.scroll-animation-controls {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  background-color: #0005;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.rollup-active {
+  flex-grow: 1;
+}

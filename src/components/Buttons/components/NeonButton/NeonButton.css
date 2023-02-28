@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+.neon {
+  --button-color: turquoise;
+  --size: 1rem;
+  margin: 1em;
+  margin-bottom: 2em;
+  font-size: var(--size);
+  font-family: Ubuntu, monospace;
+  color: var(--button-color);
+  border: 0.1em solid var(--button-color);
+  padding: 0.4em 1em;
+  border-radius: 0.5em;
+  --shadow-scale: 1;
+  text-shadow: 0 0 calc(var(--shadow-scale) * 0.5em) var(--button-color),
+    0 0 calc(var(--shadow-scale) * 0.1em) var(--button-color);
+  box-shadow: 0 0 calc(var(--shadow-scale) * 0.5em) var(--button-color),
+    0 0 calc(var(--shadow-scale) * 0.6em) var(--button-color) inset;
+  position: relative;
+  background-color: transparent;
+}
+
+.neon::after {
+  content: '';
+  background: var(--button-color);
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  top: 1em;
+  left: 0;
+  transform: translate(0, 1.3em) perspective(1em) rotateX(40deg) scale(1.4, 0.5);
+  filter: blur(1em);
+  opacity: 0.6;
+}
+
+.neon:active {
+  --shadow-scale: 1.3;
+}

@@ -1,0 +1,37 @@
+---
+import ScrollAnimationLogo from '@components/ScrollAnimationLogo/ScrollAnimationLogo.astro';
+import { scrollAnimationTypes } from './scrollAnimations';
+import './ScrollAnimations.scss';
+---
+
+<script>
+  import setupScrollAnimations from './scrollAnimations';
+  const pages = document.querySelectorAll<HTMLElement>('.page');
+  pages.forEach(
+    (page, i) =>
+      (page.style.background = `fixed no-repeat center/cover url('https://picsum.photos/1024/768/?blur&random=${i}')`),
+  );
+  setupScrollAnimations('sticky');
+  const controller = document.querySelector('select');
+  if (controller) {
+    controller.addEventListener('change', e => {
+      const target = e.target as HTMLSelectElement;
+      setupScrollAnimations(target.value);
+    });
+  }
+</script>
+<div class="scroll-animation-container">
+  <div class="scroll-animation-page">
+    Scroll Animations
+    <ScrollAnimationLogo />
+  </div>
+  <div class="scroll-animation-page">Try changing settings below to try out different animations</div>
+  <div class="scroll-animation-page">3rd Page</div>
+  <div class="scroll-animation-page">4th Page</div>
+  <div class="scroll-animation-controls">
+    Scroll Options
+    <select>
+      {scrollAnimationTypes.map(type => <option value={type.value}>{type.name}</option>)}
+    </select>
+  </div>
+</div>

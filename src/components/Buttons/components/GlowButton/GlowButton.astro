@@ -1,0 +1,25 @@
+---
+import './GlowButton.css';
+const { size } = Astro.props;
+---
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.glowButton')!;
+  buttons.forEach(button => {
+    const size = Number(button.dataset.size);
+    button.style.setProperty('--size', `${size}rem`);
+    const styles = window.getComputedStyle(button);
+    const fontSize = parseFloat(styles.getPropertyValue('font-size'));
+    const rects = button.querySelectorAll('rect');
+    const rxValue = `${fontSize / 2}px`;
+    rects.forEach(rect => rect.setAttribute('rx', rxValue));
+  });
+</script>
+
+<button class="glowButton" data-size={size}>
+  <slot />
+  <svg class="glowContainer">
+    <rect rx={size * 16} pathLength="100" class="glowLine"></rect>
+    <rect rx={size * 16} pathLength="100" class="glowBlur"></rect>
+  </svg>
+</button>

@@ -1,0 +1,60 @@
+---
+import './ThreeDButton.scss';
+const { size = 1 } = Astro.props;
+---
+
+<script>
+  const maxAngle = 30;
+  const wrappers = document.querySelectorAll<HTMLDivElement>('.three-d-button-wrapper');
+  wrappers.forEach(wrapper => {
+    const size = wrapper.dataset.size;
+    wrapper.style.setProperty('--size', `${size}rem`);
+    let translateZ = 0.8;
+    let xAngle = 0;
+    let yAngle = 0;
+
+    wrapper.onmousedown = handleMouseDown;
+    wrapper.onmouseleave = handleMouseLeave;
+    wrapper.onmousemove = handleMouseMove;
+    wrapper.onmouseup = handleMouseUp;
+
+    function updateTransform() {
+      wrapper.style.transform = `
+      perspective(400px) 
+      rotateY(${xAngle}deg) 
+      rotateX(${yAngle}deg)
+      `;
+      wrapper.style.setProperty('--depth', `${translateZ}em`);
+    }
+
+    function handleMouseMove(event: MouseEvent) {
+      const { x, y, width, height } = wrapper.getBoundingClientRect();
+      xAngle = maxAngle * ((event.clientX - x - width / 2) / (width / 2));
+      yAngle = maxAngle * -((event.clientY - y - height / 2) / (height / 2));
+      updateTransform();
+    }
+
+    function handleMouseLeave() {
+      xAngle = 0;
+      yAngle = 0;
+      translateZ = 0.8;
+      updateTransform();
+    }
+
+    function handleMouseDown() {
+      translateZ = 0.1;
+      updateTransform();
+    }
+
+    function handleMouseUp() {
+      translateZ = 0.8;
+      updateTransform();
+    }
+  });
+</script>
+
+<div class="three-d-button-wrapper" data-size={size}>
+  <button class="three-d-button">
+    <slot />
+  </button>
+</div>

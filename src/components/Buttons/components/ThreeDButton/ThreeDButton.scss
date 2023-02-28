@@ -1,0 +1,42 @@
+.three-d-button-wrapper {
+  --size: 1rem;
+  --depth: 0.8em;
+  position: relative;
+  font-size: var(--size);
+  margin: var(--size);
+  display: inline-block;
+  background: linear-gradient(-30deg, lightblue, rgb(255, 168, 86));
+  border-radius: 0.5em;
+  transform-style: preserve-3d;
+  transition: transform 200ms;
+  padding: 0.5em 0.6em;
+}
+
+.three-d-button {
+  padding: 1em;
+  position: relative;
+  font-size: inherit;
+  border: none;
+  background-color: rgb(48, 48, 48);
+  color: white;
+  border-radius: 0.5em;
+  margin: 0;
+  transition: inherit;
+  transform-style: preserve-3d;
+  transform: translateZ(var(--depth));
+  text-shadow: #ddd 0 0 0.1em;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0.1em;
+    background-color: #2227;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.2em 0.2em #2227;
+    transform: translateZ(calc(-1 * var(--depth))) translateY(0.1em);
+    transition: inherit;
+  }
+  &:active {
+    color: #ddd;
+  }
+}

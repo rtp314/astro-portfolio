@@ -1,0 +1,69 @@
+---
+---
+
+<style lang="scss">
+  div {
+    position: relative;
+    isolation: isolate;
+    color: yellow;
+    display: grid;
+    place-content: center;
+    padding: 0.3em 0.1em;
+    font-weight: bold;
+
+    & > span {
+      mix-blend-mode: difference;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    animation: slide 4s infinite;
+    opacity: 0.5;
+  }
+
+  @keyframes slide {
+    0% {
+      top: 100%;
+    }
+    25% {
+      top: 0px;
+      bottom: 0px;
+    }
+    50% {
+      bottom: 100%;
+    }
+    100% {
+      bottom: 100%;
+      top: 0px;
+    }
+  }
+
+  .red {
+    background-color: red;
+    animation-delay: 1s;
+  }
+
+  .blue {
+    background-color: blue;
+    animation-delay: 2s;
+  }
+
+  .green {
+    background-color: green;
+    animation-delay: 3s;
+  }
+
+  .purple {
+    background-color: purple;
+  }
+</style>
+
+<div>
+  <span class="overlay red"></span>
+  <span class="overlay blue"></span>
+  <span class="overlay green"></span>
+  <span class="overlay purple"></span>
+  <span>Style</span>
+</div>

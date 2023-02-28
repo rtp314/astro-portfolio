@@ -1,0 +1,26 @@
+---
+import './RippleButton.scss';
+const { size = 1 } = Astro.props;
+---
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.ripple-button');
+  buttons.forEach(button => {
+    const size = button.dataset.size;
+    button.style.setProperty('--size', `${size}rem`);
+    button.addEventListener('click', event => {
+      const target = event.target as HTMLButtonElement;
+      target.dataset.clicked = 'false';
+      const posY = event.offsetY;
+      const posX = event.offsetX;
+      target.style.setProperty('--posY', posY + 'px');
+      target.style.setProperty('--posX', posX + 'px');
+      target.dataset.clicked = 'true';
+      target.addEventListener('animationend', () => (target.dataset.clicked = 'false'), { once: true });
+    });
+  });
+</script>
+
+<button data-size={size} class="ripple-button">
+  <slot />
+</button>

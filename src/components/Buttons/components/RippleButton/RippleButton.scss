@@ -1,0 +1,35 @@
+.ripple-button {
+  --size: 1rem;
+  font-size: var(--size);
+  padding: 1em 3em;
+  background: transparent;
+  color: white;
+  border: white max(1px, 0.15em) solid;
+  border-radius: 0.4em;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: block;
+    background: white;
+    width: 100%;
+    aspect-ratio: 1;
+    position: absolute;
+    top: var(--posY);
+    left: var(--posX);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  &[data-clicked='true']::before {
+    animation: pulse 400ms;
+  }
+}
+
+@keyframes pulse {
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}

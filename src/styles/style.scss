@@ -54,6 +54,10 @@ body {
   font-family: var(--ff-body);
 }
 
+main {
+  margin-top: 3rem;
+}
+
 p {
   max-width: 60ch;
   font-size: var(--fs-body);
