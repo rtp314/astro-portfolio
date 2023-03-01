@@ -1,0 +1,184 @@
+---
+import CSSCode from './components/CSSCode.astro';
+import HTMLCode from './components/HTMLCode.astro';
+import JSCode from './components/JSCode.astro';
+---
+
+<style lang="scss">
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .banner-subheading {
+    font-size: 1.5rem;
+    font-weight: normal;
+    text-align: start;
+    margin: 1rem;
+  }
+
+  section {
+    margin: 0px;
+    height: min(100svh, 50rem);
+    width: 100%;
+    max-width: 100%;
+    background-color: var(--color-primary-100);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .banner-image {
+    perspective: 50rem;
+    position: relative;
+    width: min(100%, 25rem);
+    aspect-ratio: 1;
+    isolation: isolate;
+    transform: translateY(-30%);
+    flex-shrink: 0;
+  }
+
+  .folder {
+    position: absolute;
+    width: 70%;
+    height: calc(70% + 5rem);
+    --offsetY: 30%;
+    transform: translateX(var(--offsetX)) translateY(var(--offsetY)) rotateY(45deg);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 5rem 0 0 0;
+      background-color: lightblue;
+      opacity: 0.6;
+      border: 2px solid #fff6;
+      border-radius: 0.5rem;
+      --clip-width: 30%;
+      --clip-height: 3rem;
+      clip-path: polygon(
+        0% var(--clip-height),
+        calc(100% - var(--clip-width) - var(--clip-height)) var(--clip-height),
+        calc(100% - var(--clip-width)) 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+      );
+    }
+
+    &:hover {
+      --offsetY: 50%;
+    }
+
+    & .transparency-wrapper {
+      mask-image: linear-gradient(#000f, transparent);
+      -webkit-mask-image: linear-gradient(transparent 0%, white 30%, white 90%, transparent 100%);
+      transform: translateZ(1rem);
+      position: absolute;
+      inset: 0 1rem;
+      pointer-events: none;
+      font-size: 0.5rem;
+    }
+
+    & .text-wrapper {
+      position: absolute;
+      top: 100%;
+      display: block;
+      opacity: 0.5;
+      filter: blur(1px);
+      animation: text-float 120s linear infinite;
+      animation-delay: 3s;
+    }
+
+    & .delay {
+      animation-delay: 63s;
+    }
+  }
+
+  .left {
+    --offsetX: 0%;
+    z-index: 1;
+    animation: folder-zoom-in 3600ms linear;
+  }
+
+  .center {
+    --offsetX: 25%;
+    z-index: 2;
+    animation: folder-zoom-in 3300ms linear;
+  }
+
+  .right {
+    --offsetX: 50%;
+    z-index: 3;
+    animation: folder-zoom-in 3000ms linear;
+  }
+
+  @keyframes folder-zoom-in {
+    0% {
+      transform: translateX(calc(-1 * (100vw + 100%))) translateY(var(--offsetY));
+    }
+    70% {
+      transform: translateX(calc(var(--offsetX) - 100%)) translateY(var(--offsetY));
+    }
+    100% {
+      transform: translateX(var(--offsetX)) translateY(var(--offsetY)) rotateY(45deg);
+    }
+  }
+
+  @keyframes text-float {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-200%);
+    }
+  }
+
+  .banner-text {
+    justify-self: flex-end;
+  }
+</style>
+
+<section>
+  <div class="banner-text">
+    <h1>Samuel Reed Coding</h1>
+    <h2 class="banner-subheading">Frontend Development</h2>
+  </div>
+
+  <div class="banner-image">
+    <div class="folder left">
+      <span class="transparency-wrapper">
+        <span class="text-wrapper">
+          <HTMLCode />
+        </span>
+        <span class="text-wrapper delay">
+          <HTMLCode />
+        </span>
+      </span>
+    </div>
+    <div class="folder center">
+      <span class="transparency-wrapper">
+        <span class="text-wrapper">
+          <CSSCode />
+        </span>
+        <span class="text-wrapper delay">
+          <CSSCode />
+        </span>
+      </span>
+    </div>
+    <div class="folder right">
+      <span class="transparency-wrapper">
+        <span class="text-wrapper">
+          <JSCode />
+        </span>
+        <span class="text-wrapper delay">
+          <JSCode />
+        </span>
+      </span>
+    </div>
+  </div>
+</section>
