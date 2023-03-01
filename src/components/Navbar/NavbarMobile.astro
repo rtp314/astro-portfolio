@@ -1,4 +1,10 @@
 <style lang="scss">
+  @media (min-width: 480px) {
+    #open-mobile-nav {
+      display: none;
+    }
+  }
+
   #open-mobile-nav {
     font-family: inherit;
     font-size: 1.8rem;
@@ -30,59 +36,11 @@
   label {
     visibility: hidden;
   }
-
-  nav {
-    font-size: var(--fs-nav);
-    font-family: var(--ff-heading);
-    color: var(--color-nav);
-    background-color: var(--color-background-nav);
-    width: 100%;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 5;
-
-    & > ul {
-      margin: 0 auto;
-      padding: 0;
-      max-width: 50rem;
-      display: flex;
-      justify-content: space-around;
-      gap: 2rem;
-    }
-
-    li {
-      margin: 0;
-      padding: 0;
-      display: inline-block;
-      font-size: var(--fs-nav);
-      border-bottom-left-radius: 0.5em;
-      border-bottom-right-radius: 0.5em;
-
-      &:hover {
-        color: var(--color-background-nav);
-        background-color: var(--color-nav);
-      }
-    }
-
-    a {
-      display: inline-block;
-      padding: 0.5em 1em;
-      color: currentColor;
-      text-decoration: none;
-    }
-  }
-
-  @media (min-width: 480px) {
-    #open-mobile-nav {
-      display: none;
-    }
-  }
 </style>
 
 <label for="open-mobile-nav">Open Navigation Bar</label>
 <button id="open-mobile-nav"><span>{'{'}</span><span>{'}'}</span></button>
-<nav id="navbar">
+<nav id="">
   <ul>
     <li><a href="#about">{'{ About }'}</a></li>
     <li><a href="#projects">{'{ Projects }'}</a></li>

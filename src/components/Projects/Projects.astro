@@ -7,6 +7,45 @@ import sortedProjects from '@content/_sortedProjects';
 
 <!-- Codepen external script -->
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<script>
+  const display = document.getElementById('project-display');
+  const closableInfo = document.querySelectorAll<HTMLElement>('.closable-info');
+  const buttons = document.querySelectorAll<HTMLElement>('.project-button');
+  const displays = document.querySelectorAll<HTMLElement>('.project-display');
+
+  closableInfo.forEach(div => div.addEventListener('click', () => (div.style.display = 'none')));
+
+  buttons.forEach(el => el.addEventListener('click', handleProjectChange));
+
+  function handleProjectChange(e: Event) {
+    const projectName = (e.currentTarget as HTMLElement)?.id;
+    const projectDisplay = document.getElementById(projectName + '-display');
+    projectDisplay && closeOthers(projectDisplay);
+    e.currentTarget && setSelectedButton(e.currentTarget as HTMLElement);
+  }
+
+  function closeOthers(focused: HTMLElement) {
+    displays.forEach(element => {
+      if (element === focused) {
+        element.style.display = 'block';
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        element.style.display = 'none';
+      }
+      closableInfo.forEach(div => (div.style.display = 'block'));
+    });
+  }
+
+  function setSelectedButton(el: HTMLElement) {
+    buttons.forEach(button => {
+      if (button === el) {
+        button.classList.add('selected');
+      } else {
+        button.classList.remove('selected');
+      }
+    });
+  }
+</script>
 
 <section id="projects">
   <h2>Projects</h2>

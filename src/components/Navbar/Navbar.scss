@@ -9,7 +9,6 @@ nav {
   position: fixed;
   top: 0px;
   left: 0px;
-  // box-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.3);
   z-index: 5;
 
   & > ul {
@@ -26,15 +25,18 @@ nav {
     padding: 0;
     display: inline-block;
     font-size: var(--fs-nav);
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
 
     &:hover {
-      color: white;
+      color: var(--color-background-nav);
+      background-color: var(--color-nav);
     }
   }
 
   a {
     display: inline-block;
-    padding: 0.5em 0;
+    padding: 0.5em 1em;
     color: currentColor;
     text-decoration: none;
   }

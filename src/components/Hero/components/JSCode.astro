@@ -89,5 +89,34 @@ function setSelectedButton(el: HTMLElement) {
       button.classList.remove('selected');
     }
   });
-}`}
+}
+
+const contentsArray = el.innerText.split('').map(letter => {
+    const newSpan = document.createElement('span');
+    newSpan.innerText = letter;
+    return newSpan;
+  });
+  const cursor = document.createElement('span');
+  cursor.innerHTML = '0';
+  // cursor.style.fontSize = "0.9em";
+  el.innerText = '';
+  el.appendChild(cursor);
+  blinkCursor()
+    .then(typing)
+    .then(blinkCursor)
+    .then(blinkCursor)
+    .then(() => cursor.remove());
+}
+
+function blinkCursor() {
+    return new Promise<void>(resolve => {
+      setTimeout(() => (cursor.style.opacity = '0'), 500);
+      setTimeout(() => (cursor.style.opacity = '1'), 1000);
+      setTimeout(() => (cursor.style.opacity = '0'), 1500);
+      setTimeout(() => {
+        cursor.style.opacity = '1';
+        resolve();
+      }, 2000);
+    });
+  }`}
 </pre>
