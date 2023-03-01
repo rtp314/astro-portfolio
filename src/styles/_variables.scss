@@ -5,6 +5,7 @@
   --color-primary-500: #9b9a9a;
   --color-primary-300: #eee;
   --color-primary-100: #fdfdf7;
+  --color-accent-700: #1368b3;
   --color-accent-400: #2490f1;
   --color-accent-200: #58a9f0;
   --color-accent-100: #e9f2f8;
@@ -12,8 +13,8 @@
   --color-alt-2: #d0dc90;
 
   --color-background: var(--color-primary-100);
-  --color-nav: var(--color-accent-400);
-  --color-background-nav: var(--color-primary-900);
+  --color-nav: var(--color-accent-700);
+  --color-background-nav: var(--color-primary-100);
   --color-faint: var(--color-primary-300);
 
   --fs-title: 7rem;

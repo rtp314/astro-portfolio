@@ -71,7 +71,11 @@ import JSCode from './components/JSCode.astro';
     }
 
     &:hover {
-      --offsetY: 50%;
+      --offsetY: 20%;
+
+      &::before {
+        opacity: 1;
+      }
     }
 
     & .transparency-wrapper {
@@ -102,27 +106,24 @@ import JSCode from './components/JSCode.astro';
   .left {
     --offsetX: 0%;
     z-index: 1;
-    animation: folder-zoom-in 3600ms linear;
+    animation: folder-zoom-in 3600ms ease-out;
   }
 
   .center {
     --offsetX: 25%;
     z-index: 2;
-    animation: folder-zoom-in 3300ms linear;
+    animation: folder-zoom-in 3300ms ease-out;
   }
 
   .right {
     --offsetX: 50%;
     z-index: 3;
-    animation: folder-zoom-in 3000ms linear;
+    animation: folder-zoom-in 3000ms ease-out;
   }
 
   @keyframes folder-zoom-in {
     0% {
       transform: translateX(calc(-1 * (100vw + 100%))) translateY(var(--offsetY));
-    }
-    70% {
-      transform: translateX(calc(var(--offsetX) - 100%)) translateY(var(--offsetY));
     }
     100% {
       transform: translateX(var(--offsetX)) translateY(var(--offsetY)) rotateY(45deg);
@@ -140,6 +141,16 @@ import JSCode from './components/JSCode.astro';
 
   .banner-text {
     justify-self: flex-end;
+
+    & a {
+      font-size: 1.2rem;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background-color: var(--color-accent-700);
+      border-radius: 0.3em;
+      padding: 0.5em 1em;
+    }
   }
 </style>
 
@@ -147,6 +158,7 @@ import JSCode from './components/JSCode.astro';
   <div class="banner-text">
     <h1>Samuel Reed Coding</h1>
     <h2 class="banner-subheading">Frontend Development</h2>
+    <a href="#contact">Contact</a>
   </div>
 
   <div class="banner-image">
