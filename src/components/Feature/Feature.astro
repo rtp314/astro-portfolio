@@ -1,0 +1,92 @@
+<style lang="scss">
+  .feature-wrapper {
+    background-color: var(--color-primary-300);
+    isolation: isolate;
+    justify-content: center;
+    gap: 2rem;
+    padding: 5rem 3rem;
+
+    & > * {
+      //fix the flex-basis
+      flex-basis: 30rem;
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+
+  .feature {
+    margin: 6rem 0rem;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: var(--ff-heading);
+    max-width: max-content;
+    padding: 0 0.5rem;
+
+    &::before {
+      content: '{';
+      position: absolute;
+      left: min(5rem, 10vw);
+      top: calc(-1 * min(5rem, 10vw));
+      font-size: min(10rem, 30vw);
+      color: var(--color-primary-100);
+      z-index: -1;
+    }
+
+    &::after {
+      content: '}';
+      position: absolute;
+      right: min(5rem, 10vw);
+      bottom: calc(-1 * min(5rem, 10vw));
+      font-size: min(10rem, 30vw);
+      color: var(--color-primary-100);
+      z-index: -2;
+    }
+
+    .feature-title {
+      font-size: var(--fs-subheading);
+      position: relative;
+      font-weight: bold;
+    }
+
+    .feature-subtitle {
+      margin-top: 0.5rem;
+      display: block;
+      font-size: var(--fs-subsubheading);
+      align-self: flex-end;
+      padding-left: 1em;
+    }
+  }
+</style>
+
+<div class="flex feature-wrapper">
+  <div class="feature">
+    <span><span class="feature-title highlight color1">Design without Limits</span></span><span class="feature-subtitle"
+      >Let me handle the details, so you can focus on the big picture</span
+    >
+  </div>
+  <div class="icon-grid">
+    <div>
+      <img src="/icons/js-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/reactjs-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/node-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/npm-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/html-5-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/css-3-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/express-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/firebase-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/mongodb-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/js-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/reactjs-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/node-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/npm-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/html-5-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/css-3-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/express-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/firebase-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+      <img src="/icons/mongodb-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
+    </div>
+  </div>
+</div>

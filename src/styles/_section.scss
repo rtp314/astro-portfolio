@@ -1,102 +1,44 @@
 section {
-	max-width: 80rem;
-	margin: 10rem auto;
+  max-width: 80rem;
+  margin: 10rem auto;
 
-	p {
-		margin: 2em auto 1em auto;
-	}
+  p {
+    margin: 2em auto 1em auto;
+  }
 
-	h2 {
-		margin-top: 5rem;
-		margin-bottom: 3rem;
-		text-align: center;
-	}
+  h2 {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
 }
 
 .icon-grid {
-	overflow: hidden;
+  overflow: hidden;
 
-	& > div {
-		display: flex;
-		flex-wrap: nowrap;
-		gap: 1rem;
-		// justify-content: flex-start;
-		// height: 200px;
-		height: min(200px, 30vw);
-		aspect-ratio: 0.25;
-		animation: scroll 50s linear infinite;
-	}
+  & > div {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    // justify-content: flex-start;
+    // height: 200px;
+    height: min(200px, 30vw);
+    aspect-ratio: 0.25;
+    animation: scroll 50s linear infinite;
+  }
 
-	@keyframes scroll {
-		0% {
-			transform: translateX(0);
-		}
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
 
-		100% {
-			transform: translateX(-50%);
-		}
-	}
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 
-	.icon-js {
-		height: 100%;
-		aspect-ratio: 1;
-	}
-}
-
-.feature-wrapper {
-	justify-content: center;
-	gap: 2rem;
-
-	& > * {
-		//fix the flex-basis
-		flex-basis: 30rem;
-		flex-grow: 1;
-		flex-shrink: 1;
-	}
-}
-
-.feature {
-	margin: 6rem 0rem;
-	position: relative;
-	display: inline-flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	font-family: var(--ff-heading);
-	max-width: max-content;
-	padding: 0 0.5rem;
-
-	&::before {
-		content: "{";
-		position: absolute;
-		left: min(5rem, 10vw);
-		top: calc(-1 * min(5rem, 10vw));
-		font-size: min(10rem, 30vw);
-		color: var(--color-faint);
-		z-index: -1;
-	}
-
-	&::after {
-		content: "}";
-		position: absolute;
-		right: min(5rem, 10vw);
-		bottom: calc(-1 * min(5rem, 10vw));
-		font-size: min(10rem, 30vw);
-		color: var(--color-faint);
-		z-index: -2;
-	}
-
-	.feature-title {
-		font-size: var(--fs-subheading);
-		position: relative;
-		font-weight: bold;
-	}
-
-	.feature-subtitle {
-		margin-top: 0.5rem;
-		display: block;
-		font-size: var(--fs-subsubheading);
-		align-self: flex-end;
-		padding-left: 1em;
-	}
+  .icon-js {
+    height: 100%;
+    aspect-ratio: 1;
+  }
 }
