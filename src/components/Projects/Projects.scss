@@ -1,130 +1,130 @@
 #projects {
-	background-color: var(--color-primary-300);
-	position: relative;
-	width: min(100%, 1300px);
-	--clip-width: 20rem;
-	--clip-height: 8rem;
-	clip-path: polygon(
-		0% 0%,
-		var(--clip-width) 0%,
-		calc(var(--clip-width) + var(--clip-height)) var(--clip-height),
-		100% var(--clip-height),
-		100% 100%,
-		0% 100%
-	);
+  background-color: var(--color-accent-100);
+  position: relative;
+  width: min(100%, 1300px);
+  --clip-width: 20rem;
+  --clip-height: 8rem;
+  clip-path: polygon(
+    0% 0%,
+    var(--clip-width) 0%,
+    calc(var(--clip-width) + var(--clip-height)) var(--clip-height),
+    100% var(--clip-height),
+    100% 100%,
+    0% 100%
+  );
 
-	h2 {
-		text-align: start;
-		padding: 1em 2em;
-		--bracket-color: var(--color-background);
-	}
+  h2 {
+    text-align: start;
+    padding: 1em 2em;
+    --bracket-color: var(--color-background);
+  }
 
-	.projects-wrapper {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		padding: 1rem;
-		gap: 0;
-	}
+  .projects-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 0;
+  }
 
-	.project-sidebar {
-		position: sticky;
-		top: 2.5rem;
-		flex-basis: 10rem;
-		flex-grow: 1;
-		height: auto;
-		align-self: flex-start;
-		z-index: 2;
-		background-color: var(--color-faint);
+  .project-sidebar {
+    position: sticky;
+    top: 2.5rem;
+    flex-basis: 10rem;
+    flex-grow: 1;
+    height: auto;
+    align-self: flex-start;
+    z-index: 2;
+    background-color: var(--color-accent-200);
 
-		ul {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			padding: 0;
-			margin: 0;
-		}
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
 
-		li {
-			padding: 1em;
-			display: inline-block;
-			flex-basis: 7rem;
-			flex-grow: 1;
-			display: flex;
-			align-items: center;
-			gap: 0.4em;
-			border-bottom: 1px solid var(--color-background);
+    li {
+      padding: 1em;
+      display: inline-block;
+      flex-basis: 7rem;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      border-bottom: 1px solid var(--color-background);
 
-			&:first-child {
-				border-top: 1px solid var(--color-background);
-			}
+      &:first-child {
+        border-top: 1px solid var(--color-background);
+      }
 
-			&:hover {
-				background-color: var(--color-background);
-			}
-		}
+      &:hover {
+        background-color: var(--color-background);
+      }
+    }
 
-		.selected {
-			background-color: var(--color-background);
-			font-weight: bold;
-		}
-	}
+    .selected {
+      background-color: var(--color-background);
+      font-weight: bold;
+    }
+  }
 
-	#project-display-panel {
-		background-color: var(--color-background);
-		flex-basis: 60rem;
-		flex-grow: 20;
-		min-height: 10rem;
-		padding: 1rem;
+  #project-display-panel {
+    background-color: var(--color-background);
+    flex-basis: 60rem;
+    flex-grow: 20;
+    min-height: 10rem;
+    padding: 1rem;
 
-		& > div {
-			position: relative;
-			display: none;
-		}
-	}
+    & > div {
+      position: relative;
+      display: none;
+    }
+  }
 
-	.project-info {
-		position: relative;
-		width: 100%;
-		min-height: 40rem;
-		padding: 1em 3em;
-		background: linear-gradient(15deg, rgba(253, 253, 247, 0.9) 30%, rgba(255, 255, 255, 0) 60%);
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-	}
+  .project-info {
+    position: relative;
+    width: 100%;
+    min-height: 40rem;
+    padding: 1em 3em;
+    background: linear-gradient(15deg, rgba(253, 253, 247, 0.9) 30%, rgba(255, 255, 255, 0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 
-	.closable-info {
-		position: absolute;
-		inset: 0;
+  .closable-info {
+    position: absolute;
+    inset: 0;
 
-		& > div {
-			position: absolute;
-			bottom: 1em;
-		}
-	}
+    & > div {
+      position: absolute;
+      bottom: 1em;
+    }
+  }
 
-	.text-bottom {
-		width: 100%;
-		max-width: 30rem;
+  .text-bottom {
+    width: 100%;
+    max-width: 30rem;
 
-		h3 {
-			font-size: var(--fs-nav);
-		}
+    h3 {
+      font-size: var(--fs-nav);
+    }
 
-		p {
-			margin-left: 0;
-		}
-	}
+    p {
+      margin-left: 0;
+    }
+  }
 
-	$projects: social, rps, store, spacex, node;
+  $projects: social, rps, store, spacex, node;
 
-	@each $project in $projects {
-		.#{$project}background {
-			background: linear-gradient(#fffd, #fffd), url("images/#{$project}.webp");
-			background-repeat: no-repeat;
-			background-size: min(100%, 60rem);
-			background-position: top;
-		}
-	}
+  @each $project in $projects {
+    .#{$project}background {
+      background: linear-gradient(#fffd, #fffd), url('images/#{$project}.webp');
+      background-repeat: no-repeat;
+      background-size: min(100%, 60rem);
+      background-position: top;
+    }
+  }
 }
