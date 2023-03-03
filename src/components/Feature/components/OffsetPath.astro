@@ -1,0 +1,53 @@
+---
+const testArray = new Array(20).fill(true);
+---
+
+<style lang="scss">
+  #test-wrapper {
+    width: 640px;
+    height: 420px;
+    position: relative;
+    border: 1px solid blue;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .test {
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    offset: path('M 608 479 Q 374 361 212 245 Q 2 100 127 60 Q 254 25 349 140 Q 449 272 426 474') 0deg;
+    animation: move 10s infinite ease-out;
+  }
+
+  @keyframes move {
+    0% {
+      transform: scale(2);
+      offset-distance: 0%;
+      z-index: 1;
+      background-color: red;
+    }
+    100% {
+      transform: scale(0.2);
+      offset-distance: 100%;
+      z-index: -1;
+      background-color: blue;
+    }
+  }
+</style>
+
+<svg viewBox="0 0 640 480">
+  <path stroke="#000" fill="none" d="M 608 479 Q 374 361 212 245 Q 2 100 127 60 Q 254 25 349 140 Q 449 272 426 474"
+  ></path>
+</svg>
+<div id="test-wrapper">
+  {
+    testArray.map((_, i) => (
+      <span class="test" style={`animation-delay: ${i * 5}00ms;`}>
+        Text
+      </span>
+    ))
+  }
+</div>

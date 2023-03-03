@@ -29,6 +29,8 @@ import JSCode from './components/JSCode.astro';
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 2rem;
+    // master controls
+    --zoom-in-animation-length: 1s;
   }
 
   .banner-image {
@@ -96,30 +98,30 @@ import JSCode from './components/JSCode.astro';
       opacity: 0.5;
       filter: blur(1px);
       animation: text-float 120s linear infinite;
-      animation-delay: 3s;
+      animation-delay: var(--zoom-in-animation-length);
     }
 
     & .delay {
-      animation-delay: 63s;
+      animation-delay: calc(60s + var(--zoom-in-animation-length));
     }
   }
 
   .left {
     --offsetX: 0%;
     z-index: 1;
-    animation: folder-zoom-in 3600ms ease-out;
+    animation: folder-zoom-in calc(600ms + var(--zoom-in-animation-length)) ease-out;
   }
 
   .center {
     --offsetX: 25%;
     z-index: 2;
-    animation: folder-zoom-in 3300ms ease-out;
+    animation: folder-zoom-in calc(300ms + var(--zoom-in-animation-length)) ease-out;
   }
 
   .right {
     --offsetX: 50%;
     z-index: 3;
-    animation: folder-zoom-in 3000ms ease-out;
+    animation: folder-zoom-in var(--zoom-in-animation-length) ease-out;
   }
 
   @keyframes folder-zoom-in {
@@ -155,7 +157,7 @@ import JSCode from './components/JSCode.astro';
   }
 </style>
 
-<section>
+<section id="banner">
   <div class="banner-text">
     <h1>Samuel Reed Coding</h1>
     <h2 class="banner-subheading">Frontend Development</h2>
