@@ -10,7 +10,7 @@
     left: 1rem;
     background-color: white;
     border-radius: 50%;
-    z-index: 10;
+    z-index: 6;
     outline: none;
     border: solid 1px var(--color-primary-300);
     display: flex;
@@ -35,20 +35,36 @@
     font-size: var(--fs-nav);
     font-family: var(--ff-heading);
     color: var(--color-nav);
-    background-color: var(--color-background-nav);
-    width: 100%;
     position: fixed;
+    height: 100svh;
     top: 0px;
     left: 0px;
     z-index: 5;
 
-    & > ul {
+    .navbar-wrapper {
+      background-color: var(--color-background-nav);
+      transition: transform 400ms;
+      transform: translateX(0);
+      padding-top: 5rem;
+      height: 100%;
+      width: 100%;
+    }
+
+    &[data-hidden='true'] {
+      .navbar-wrapper {
+        transform: translateX(-120%);
+      }
+    }
+
+    ul {
       margin: 0 auto;
       padding: 0;
+      padding-top: 1rem;
       max-width: 50rem;
       display: flex;
+      flex-direction: column;
       justify-content: space-around;
-      gap: 2rem;
+      gap: 1rem;
     }
 
     li {
@@ -56,7 +72,8 @@
       padding: 0;
       display: inline-block;
       font-size: var(--fs-nav);
-      border-bottom-left-radius: 0.5em;
+      border-radius: 0;
+      border-top-right-radius: 0.5em;
       border-bottom-right-radius: 0.5em;
 
       &:hover {
@@ -73,19 +90,109 @@
     }
   }
 
+  #mobile-nav-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100vw;
+    height: 100svh;
+    opacity: 0.6;
+    z-index: 4;
+    background-color: black;
+
+    &[data-hidden='true'] {
+      display: none;
+    }
+  }
+
   @media (min-width: 480px) {
     #open-mobile-nav {
+      display: none;
+    }
+
+    nav {
+      width: 100%;
+      height: auto;
+      transform: none;
+
+      &[data-hidden='true'] {
+        display: block;
+        & .navbar-wrapper {
+          transform: none;
+        }
+      }
+
+      .navbar-wrapper {
+        padding: 0;
+      }
+
+      & ul {
+        margin: 0 auto;
+        padding: 0;
+        max-width: 50rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 2rem;
+      }
+
+      li {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        font-size: var(--fs-nav);
+        border-radius: 0;
+        border-bottom-left-radius: 0.5em;
+        border-bottom-right-radius: 0.5em;
+      }
+    }
+
+    #mobile-nav-backdrop {
       display: none;
     }
   }
 </style>
 
+<script>
+  const button = document.getElementById('open-mobile-nav');
+  const navbar = document.querySelector('nav');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+
+  function closeNavbar() {
+    if (navbar) navbar.dataset.hidden = 'true';
+    if (backdrop) backdrop.dataset.hidden = 'true';
+  }
+
+  if (button && navbar) {
+    button.addEventListener('click', () => {
+      const isHiddenString = navbar.dataset.hidden;
+      if (isHiddenString === 'true') {
+        navbar.dataset.hidden = 'false';
+        if (backdrop) backdrop.dataset.hidden = 'false';
+      } else {
+        closeNavbar();
+      }
+    });
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeNavbar);
+    }
+
+    const links = navbar.querySelectorAll('a');
+    links.forEach(link => link.addEventListener('click', closeNavbar));
+  }
+</script>
+
 <label for="open-mobile-nav">Open Navigation Bar</label>
 <button id="open-mobile-nav"><span>{'{'}</span><span>{'}'}</span></button>
-<nav id="navbar">
-  <ul>
-    <li><a href="#about">{'{ About }'}</a></li>
-    <li><a href="#projects">{'{ Projects }'}</a></li>
-    <li><a href="#contact">{'{ Contact }'}</a></li>
-  </ul>
+<nav id="navbar" data-hidden="true">
+  <div class="navbar-wrapper">
+    <ul>
+      <li><a href="#about">{'{ About }'}</a></li>
+      <li><a href="#projects">{'{ Projects }'}</a></li>
+      <li><a href="#contact">{'{ Contact }'}</a></li>
+    </ul>
+  </div>
 </nav>
+<div id="mobile-nav-backdrop" data-hidden="true"></div>
