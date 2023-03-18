@@ -121,7 +121,7 @@
 
   @each $project in $projects {
     .#{$project}background {
-      background: linear-gradient(#fffd, #fffd), url('images/#{$project}.webp');
+      background: linear-gradient(#fffd, #fffd), url('/images/#{$project}.webp');
       background-repeat: no-repeat;
       background-size: min(100%, 60rem);
       background-position: top;
