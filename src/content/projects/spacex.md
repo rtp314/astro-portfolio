@@ -5,10 +5,10 @@ title: SpaceX
 draft: true
 ---
 
-See the launch history of SpaceX
+See the launch history of SpaceX. Originally built using the official SpaceX GraphQL API. When that was taken down I rebuilt the project with a third-party Rest API
 
-**Technologies used: GraphQL API, Typescript, React, Styled-Components, React-Bootstrap**
+**Technologies used: Rest API (formerly GraphQL), Typescript, React, Styled-Components, React-Bootstrap**
 
 Click on a card to load more details.
 
-Visit the app at <a href="http://rtp-projects.epizy.com/spacex" target="_blank">rtp-projects.epizy.com/spacex</a>
+Visit the app at <a href="./spacex" target="_blank">rtp314.github.io/spacex</a>
