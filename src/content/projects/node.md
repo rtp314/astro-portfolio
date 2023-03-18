@@ -14,3 +14,5 @@ No front-end libraries used, and only a few lines of Javascript are served to th
 Visit the app at <a href="https://jagged-admitted-case.glitch.me" target="_blank">jagged-admitted-case.glitch.me</a>
 
 Please be patient, Glitch can be slow to start up
+
+Or see the code in <a href='https://github.com/rtp314/auth-server' target='_blank'>the github repository</a>

@@ -13,4 +13,4 @@ Login using your GMail, or use one of the premade test accounts. Post a message,
 
 Visit the app at <a href="./social/" target="_blank">rtp314.github.io/social</a>
 
-Please be patient, Heroku can be slow to start up
+Or see the code in <a href='https://github.com/rtp314/social' target='_blank'>the github repository</a>

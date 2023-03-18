@@ -14,3 +14,5 @@ Add some items to your cart, then use card 4242 4242 4242 4242, CVC 424 to compl
 Visit the app at <a href="https://store-rtp314.herokuapp.com/" target="_blank">store-rtp314.herokuapp.com/</a>
 
 Please be patient, Heroku can be slow to start up
+
+Or see the code in <a href='https://github.com/rtp314/store' target='_blank'>the github repository</a>
