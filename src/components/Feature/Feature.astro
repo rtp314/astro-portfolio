@@ -9,7 +9,7 @@
   .feature-wrapper {
     justify-content: center;
     gap: 2rem;
-    padding: 5rem 3rem;
+    padding: 5rem 0rem;
     max-width: var(--max-site-width);
     margin: auto;
 
@@ -22,7 +22,7 @@
   }
 
   .feature {
-    margin: 6rem 0rem;
+    margin: 6rem min(3rem, 10%);
     position: relative;
     display: inline-flex;
     flex-direction: column;
@@ -75,6 +75,7 @@
         class="feature-subtitle">Let me handle the details, so you can focus on the big picture</span
       >
     </div>
+
     <div class="icon-grid">
       <div>
         <img src="/icons/js-svgrepo-com.svg" alt="Javascript Icon" class="icon-js" />
