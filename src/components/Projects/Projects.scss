@@ -46,22 +46,29 @@
     }
 
     li {
-      padding: 1em;
       display: inline-block;
       flex-basis: 7rem;
       flex-grow: 1;
-      display: flex;
-      align-items: center;
-      gap: 0.4em;
       border-bottom: 1px solid var(--color-background);
-
+      
       &:first-child {
         border-top: 1px solid var(--color-background);
       }
-
+      
       &:hover {
         background-color: var(--color-background);
       }
+    }
+    
+    button {
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      gap: 0.4em;
+      border: none;
+      font-size: inherit;
+      width: 100%;
+      text-align: inherit;
     }
 
     .selected {

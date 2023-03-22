@@ -11,9 +11,11 @@ const { projects } = Astro.props;
   <ul>
     {
       projects.map((project, i) => (
-        <li id={project.data.id} class={`project-button ${i === 0 ? 'selected' : ''}`}>
+        <li>
+        <button id={project.data.id} class={`project-button ${i === 0 ? 'selected' : ''}`}>
           <img alt={`${project.data.id} icon`} class="icon-small" src={project.data.iconSrc} />
           <span>{project.data.title}</span>
+        </button>
         </li>
       ))
     }
