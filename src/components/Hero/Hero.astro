@@ -13,7 +13,7 @@ import JSCode from './components/JSCode.astro';
   .banner-subheading {
     font-size: 1.5rem;
     font-weight: normal;
-    text-align: start;
+    text-align: inherit;
     margin: 1rem;
   }
 
@@ -28,7 +28,8 @@ import JSCode from './components/JSCode.astro';
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 2rem;
+    padding-top: 3rem;
+    // gap: 2rem;
     // master controls
     --zoom-in-animation-length: 1s;
   }
@@ -144,6 +145,7 @@ import JSCode from './components/JSCode.astro';
 
   .banner-text {
     justify-self: flex-end;
+    padding: 0 2rem;
 
     & a {
       font-size: 1.2rem;
@@ -153,6 +155,12 @@ import JSCode from './components/JSCode.astro';
       background-color: var(--color-accent-700);
       border-radius: 0.3em;
       padding: 0.5em 1em;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .banner-text {
+      text-align: center;
     }
   }
 </style>
