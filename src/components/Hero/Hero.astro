@@ -155,6 +155,10 @@ import JSCode from './components/JSCode.astro';
       background-color: var(--color-accent-700);
       border-radius: 0.3em;
       padding: 0.5em 1em;
+
+      &:hover {
+        background-color: var(--color-alt-2);
+      }
     }
   }
 
@@ -169,7 +173,10 @@ import JSCode from './components/JSCode.astro';
   <div class="banner-text">
     <h1>Samuel Reed Coding</h1>
     <h2 class="banner-subheading">Web Development</h2>
-    <a href="#contact">Contact</a>
+    <div>
+      <a href="#contact">Contact</a>
+      <a href="/files/Samuel Reed Resume.pdf" download>Download CV</a>
+    </div>
   </div>
 
   <div class="banner-image">
