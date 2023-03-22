@@ -1,6 +1,6 @@
 ---
 id: minesweeper
-iconSrc: icons/letter-s-svgrepo-com.svg
+iconSrc: images/minesweeper-icon.png
 title: Minesweeper
 draft: true
 ---
