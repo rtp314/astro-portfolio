@@ -23,7 +23,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 1rem;
     gap: 0;
   }
 
@@ -50,16 +49,16 @@
       flex-basis: 7rem;
       flex-grow: 1;
       border-bottom: 1px solid var(--color-background);
-      
+
       &:first-child {
         border-top: 1px solid var(--color-background);
       }
-      
+
       &:hover {
         background-color: var(--color-background);
       }
     }
-    
+
     button {
       padding: 1em;
       display: flex;
@@ -68,6 +67,7 @@
       border: none;
       font-size: inherit;
       width: 100%;
+      height: 100%;
       text-align: inherit;
     }
 
@@ -79,7 +79,7 @@
 
   #project-display-panel {
     background-color: var(--color-background);
-    flex-basis: 60rem;
+    flex-basis: 40rem;
     flex-grow: 20;
     min-height: 10rem;
     padding: 1rem;
@@ -128,14 +128,45 @@
 
   @each $project in $projects {
     .#{$project}background {
-      background: linear-gradient(#fffd, #fffd), url('/images/#{$project}.webp');
-      background-repeat: no-repeat;
-      background-size: min(100%, 60rem);
-      background-position: top;
+      background-image: linear-gradient(#fffd, #fffd), url('/images/#{$project}.webp');
     }
+  }
+
+  .project-background-image {
+    background-repeat: no-repeat;
+    background-size: min(100%, 60rem);
+    background-position: top;
   }
 
   .minesweeperbackground {
     background-color: lightgrey;
+  }
+}
+
+@media (max-width: 50rem) {
+  .project-sidebar {
+    position: relative;
+    margin-bottom: 1rem;
+
+    & li {
+      border-left: 1px solid var(--color-background);
+
+      &:first-child {
+        border: inherit;
+      }
+    }
+  }
+
+  #project-display-panel {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .project-info {
+    padding: 1em;
+  }
+
+  .project-background-image {
+    background-size: cover !important;
   }
 }

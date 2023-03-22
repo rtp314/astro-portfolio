@@ -14,7 +14,11 @@ const { projects } = Astro.props;
       const { Content } = await project.render();
       return (
         <div id={`${project.data.id}-display`} class="project-display" style={i === 0 ? { display: 'block' } : {}}>
-          <div class={`project-info ${project.data.codepen ? 'closable-info' : `${project.data.id}background`}`}>
+          <div
+            class={`project-info ${
+              project.data.codepen ? 'closable-info' : `${project.data.id}background project-background-image`
+            }`}
+          >
             <div class="text-bottom">
               <h3>{`{ ${project.data.title} }`}</h3>
               <Content />

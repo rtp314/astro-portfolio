@@ -11,21 +11,6 @@
     --fs-nav: 1rem;
   }
 }
-@media only screen and (max-width: 800px) {
-  .projects-wrapper {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-
-  #project-display-panel {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-
-  .project-info {
-    padding: 1em !important;
-  }
-}
 
 @media (prefers-reduced-motion) {
   * {
