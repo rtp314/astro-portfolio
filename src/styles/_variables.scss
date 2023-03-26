@@ -45,7 +45,7 @@
   --max-site-width: 80rem;
 }
 
-@media (prefers-color-scheme='light') {
+@media (prefers-color-scheme='dark') {
   body {
     --color-background: var(--color-primary-800);
     --color-background-nav: var(--color-primary-700);
