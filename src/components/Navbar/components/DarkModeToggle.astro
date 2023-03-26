@@ -59,28 +59,25 @@ import sunImg from '@icons/sun-svgrepo-com.svg';
         border: none;
         margin: 0;
         transition: transform 200ms;
+        transform: translateX(0.1rem);
       }
 
       .icon {
+        display: inline-block;
         position: absolute;
         z-index: -1;
         height: 0.9rem;
         width: 0.9rem;
-        top: -0.3rem;
-
-        img {
-          position: relative;
-          height: 100%;
-          object-fit: cover;
-        }
+        top: 0.15rem;
+        object-fit: cover;
       }
 
       .moon {
-        left: 0.1rem;
+        left: 0.15rem;
       }
 
       .sun {
-        right: 0.1rem;
+        right: 0.15rem;
       }
     }
 
@@ -88,7 +85,7 @@ import sunImg from '@icons/sun-svgrepo-com.svg';
       background-color: var(--color-accent-1) !important;
 
       button {
-        transform: translateX(1.2rem);
+        transform: translateX(1.2rem) !important;
       }
     }
   }
@@ -151,7 +148,7 @@ import sunImg from '@icons/sun-svgrepo-com.svg';
   <input id="dark-mode-checkbox" type="checkbox" />
   <span id="dark-mode-toggle">
     <button></button>
-    <span class="icon moon"><img src={moonImg} /></span>
-    <span class="icon sun"><img src={sunImg} /></span>
+    <img class="icon moon" src={moonImg} />
+    <img class="icon sun" src={sunImg} />
   </span>
 </div>
