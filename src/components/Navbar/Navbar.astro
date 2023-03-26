@@ -1,3 +1,7 @@
+---
+import DarkModeToggle from './components/DarkModeToggle.astro';
+---
+
 <style lang="scss">
   #open-mobile-nav {
     font-family: inherit;
@@ -194,5 +198,6 @@
       <li><a href="#contact">{'{ Contact }'}</a></li>
     </ul>
   </div>
+  <DarkModeToggle />
 </nav>
 <div id="mobile-nav-backdrop" data-hidden="true"></div>
