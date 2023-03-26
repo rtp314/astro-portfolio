@@ -1,4 +1,5 @@
 :root {
+  // palette - only use these for setting other variables, to easily change color schemes
   --color-primary-900: black;
   --color-primary-800: #252526;
   --color-primary-700: #333333;
@@ -9,14 +10,25 @@
   --color-accent-400: #2490f1;
   --color-accent-200: #d4e6f7;
   --color-accent-100: #e9f2f8;
-  --color-alt-1: #c586c0;
-  --color-alt-2: #d0dc90;
+  --color-accent-alt1-700: #c586c0;
+  --color-accent-alt2-700: #d0dc90;
 
+  --color-accent-transparent-700: #1368b380;
+  --color-accent-transparent-alt1-700: #c586c080;
+  --color-accent-transparent-alt2-700: #d0dc9080;
+
+  // theme variables, use these in components
   --color-background: var(--color-primary-100);
   --color-nav: var(--color-accent-700);
   --color-background-nav: var(--color-primary-100);
-  --color-faint: var(--color-primary-300);
+  --color-primary-faint: var(--color-primary-300);
+  --color-text: var(--color-primary-900);
+  --color-accent-1: var(--color-accent-700);
+  --color-accent-faint: var(--color-accent-200);
+  --color-accent-2: var(--color-accent-alt1-700);
+  --color-accent-3: var(--color-accent-alt2-700);
 
+  // text variables
   --fs-title: 7rem;
   --fs-subheading: 3rem;
   --fs-subsubheading: 1.5rem;
@@ -27,5 +39,19 @@
   --ff-heading: 'Encode Sans';
   --ff-title: 'Roboto Mono';
 
+  // other
   --max-site-width: 80rem;
+}
+
+@media (prefers-color-scheme='dark') {
+  body {
+    --color-background: var(--color-primary-800);
+    --color-background-nav: var(--color-primary-700);
+    --color-nav: var(--color-accent-100);
+    --color-text: var(--color-primary-100);
+    --color-primary-faint: var(--color-primary-700);
+    --color-accent-1: var(--color-accent-transparent-700);
+    --color-accent-2: var(--color-accent-transparent-alt1-700);
+    --color-accent-3: var(--color-accent-transparent-alt2-700);
+  }
 }

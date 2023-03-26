@@ -22,7 +22,7 @@ import JSCode from './components/JSCode.astro';
     height: min(100svh, 50rem);
     width: 100%;
     max-width: 100%;
-    background-color: var(--color-primary-100);
+    background-color: var(--color-background);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -152,12 +152,13 @@ import JSCode from './components/JSCode.astro';
       display: inline-block;
       text-decoration: none;
       color: white;
-      background-color: var(--color-accent-700);
+      background-color: var(--color-accent-1);
       border-radius: 0.3em;
       padding: 0.5em 1em;
 
       &:hover {
-        background-color: var(--color-alt-2);
+        color: black;
+        background-color: var(--color-accent-3);
       }
     }
   }
