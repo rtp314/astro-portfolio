@@ -147,9 +147,10 @@
 }
 
 @media (max-width: 50rem) {
-  .project-sidebar {
+  #projects .project-sidebar {
     position: relative;
     margin-bottom: 1rem;
+    top: 0;
 
     & li {
       border-left: 1px solid var(--color-background);
