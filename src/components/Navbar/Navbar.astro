@@ -44,19 +44,19 @@ import DarkModeToggle from './components/DarkModeToggle.astro';
     top: 0px;
     left: 0px;
     z-index: 5;
+    transition: transform 400ms;
+    transform: translateX(0);
 
     .navbar-wrapper {
       background-color: var(--color-background-nav);
-      transition: transform 400ms;
-      transform: translateX(0);
       padding-top: 5rem;
       height: 100%;
       width: 100%;
     }
 
     &[data-hidden='true'] {
+      transform: translateX(-120%);
       .navbar-wrapper {
-        transform: translateX(-120%);
       }
     }
 
@@ -110,6 +110,7 @@ import DarkModeToggle from './components/DarkModeToggle.astro';
     }
   }
 
+  // specific desktop styling
   @media (min-width: 480px) {
     #open-mobile-nav {
       display: none;
@@ -122,6 +123,7 @@ import DarkModeToggle from './components/DarkModeToggle.astro';
 
       &[data-hidden='true'] {
         display: block;
+
         & .navbar-wrapper {
           transform: none;
         }
