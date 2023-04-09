@@ -21,6 +21,7 @@ import DarkModeToggle from './components/DarkModeToggle.astro';
     justify-content: center;
     gap: 0.3rem;
     padding: 0.2rem;
+    z-index: 99;
 
     & > span:first-child {
       align-self: flex-start;
@@ -43,9 +44,9 @@ import DarkModeToggle from './components/DarkModeToggle.astro';
     height: 100svh;
     top: 0px;
     left: 0px;
-    z-index: 5;
     transition: transform 400ms;
     transform: translateX(0);
+    z-index: 90;
 
     .navbar-wrapper {
       background-color: var(--color-background-nav);
