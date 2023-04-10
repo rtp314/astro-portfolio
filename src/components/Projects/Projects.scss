@@ -96,7 +96,6 @@
   .project-info {
     position: relative;
     width: 100%;
-    min-height: 40rem;
     padding: 1em 3em;
     background: linear-gradient(15deg, rgba(253, 253, 247, 0.9) 30%, rgba(255, 255, 255, 0) 60%);
     display: flex;
@@ -114,17 +113,14 @@
     }
   }
 
-  .text-bottom {
-    width: 100%;
-    max-width: 30rem;
+  h3 {
+    font-size: var(--fs-nav);
+    padding: 1em;
+  }
 
-    h3 {
-      font-size: var(--fs-nav);
-    }
-
-    p {
-      margin-left: 0;
-    }
+  p {
+    margin-top: 1em;
+    margin-left: 0;
   }
 
   $projects: social, rps, store, spacex, node;

@@ -1,6 +1,8 @@
 ---
 import Minesweeper from '@components/Minesweeper/Minesweeper.astro';
 import type { CollectionEntry } from 'astro:content';
+import CodePenProject from './CodePenProject.astro';
+import Carousel from '@components/Carousel/Carousel.astro';
 
 interface Props {
   projects: CollectionEntry<'projects'>[];
@@ -11,49 +13,18 @@ const { projects } = Astro.props;
 <div id="project-display-panel">
   {
     projects.map(async (project, i) => {
+      if (project.data.codepen) return <CodePenProject project={project} />;
+
       const { Content } = await project.render();
+
       return (
         <div id={`${project.data.id}-display`} class="project-display" style={i === 0 ? { display: 'block' } : {}}>
-          <div
-            class={`project-info ${
-              project.data.codepen ? 'closable-info' : `${project.data.id}background project-background-image`
-            }`}
-          >
-            <div class="text-bottom">
-              <h3>{`{ ${project.data.title} }`}</h3>
-              <Content />
-              {project.data.id === 'minesweeper' && <Minesweeper />}
-            </div>
+          {project.data.images && <Carousel images={project.data.images} />}
+          <div class="project-info">
+            <h3>{`{ ${project.data.title} }`}</h3>
+            <Content />
+            {project.data.id === 'minesweeper' && <Minesweeper />}
           </div>
-          {project.data.codepen && (
-            <p
-              class="codepen"
-              data-height="850"
-              data-theme-id="dark"
-              data-default-tab="result"
-              data-slug-hash={project.data.codepenUrl}
-              data-user="reversethepolarity"
-              style="
-									height: 100%;
-									box-sizing: border-box;
-									display: flex;
-									align-items: center;
-									justify-content: center;
-									border: 2px solid;
-									margin: 1em 0;
-									padding: 1em;
-								"
-            >
-              <span>
-                See the Pen
-                <a href={`https://codepen.io/reversethepolarity/pen/${project.data.codepenUrl}`}>
-                  {project.data.title}
-                </a>{' '}
-                by Samuel (<a href="https://codepen.io/reversethepolarity">@reversethepolarity</a>) on
-                <a href="https://codepen.io">CodePen</a>.
-              </span>
-            </p>
-          )}
         </div>
       );
     })

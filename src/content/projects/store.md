@@ -4,6 +4,7 @@ iconSrc: icons/cart-svgrepo-com.svg
 title: Store
 draft: true
 order: 2
+images: ['/images/store/1.png', '/images/store/2.png', '/images/store/3.png']
 ---
 
 A simple e-commerce storefront. Client built with React, backend built with Node and Stripe

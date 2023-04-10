@@ -4,6 +4,7 @@ iconSrc: icons/icon-scissors.svg
 title: R/P/S
 draft: true
 order: 5
+images: ['/images/rps/1.png', '/images/rps/2.png', '/images/rps/3.png', '/images/rps/4.png']
 ---
 
 The classic game of Rock, Paper, Scissors, built using React and packaged with Vite

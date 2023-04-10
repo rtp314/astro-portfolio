@@ -7,6 +7,7 @@ const projectCollection = defineCollection({
     codepen: z.boolean().optional(),
     codepenUrl: z.string().optional(),
     order: z.number().optional(),
+    images: z.array(z.string()).optional(),
   }),
 });
 export const collections = {

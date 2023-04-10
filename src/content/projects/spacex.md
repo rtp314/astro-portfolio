@@ -4,6 +4,7 @@ iconSrc: icons/spacexlogo.png
 title: SpaceX
 draft: true
 order: 3
+images: ['/images/spacex/1.png', '/images/spacex/2.png']
 ---
 
 See the launch history of SpaceX.

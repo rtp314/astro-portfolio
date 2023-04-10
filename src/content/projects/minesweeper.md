@@ -3,6 +3,7 @@ id: minesweeper
 iconSrc: images/minesweeper-icon.png
 title: Minesweeper
 draft: true
+images: ['/images/minesweeper/1.png', '/images/minesweeper/2.png', '/images/minesweeper/3.png']
 ---
 
 The classic game which I spent far too much time playing.

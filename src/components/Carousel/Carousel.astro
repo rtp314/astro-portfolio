@@ -7,14 +7,14 @@ const { images } = Astro.props;
 
 <style lang="scss">
   .carousel {
-    background-color: black;
+    // background-color: #0004;
     min-height: 30rem;
     height: 100%;
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    --color-faint: #fff3;
-    --color-strong: #eee;
+    --color-faint: var(--color-project-button);
+    --color-strong: var(--color-text);
   }
 
   .carousel-image {
@@ -31,23 +31,32 @@ const { images } = Astro.props;
     outline: none;
     border: none;
     background-color: transparent;
-    color: #fff6;
+    color: var(--color-text);
     position: absolute;
     top: 0px;
     height: 100%;
-    width: min(20%, 5rem);
+    width: min(20%, 7rem);
     z-index: 10;
-    font-size: 2rem;
-
-    &:hover {
-      background-color: var(--color-faint);
-    }
+    font-size: 3rem;
 
     &[data-direction='prev'] {
       left: 0px;
+
+      &:hover {
+        background: linear-gradient(90deg, var(--color-faint), transparent);
+      }
     }
     &[data-direction='next'] {
       right: 0px;
+
+      &:hover {
+        background: linear-gradient(270deg, var(--color-faint), transparent);
+      }
+    }
+
+    &:disabled {
+      color: var(--color-faint) !important;
+      background: transparent !important;
     }
   }
 
@@ -69,6 +78,7 @@ const { images } = Astro.props;
     }
 
     & .current {
+      border: solid 1px #eee9;
       background-color: var(--color-strong);
     }
   }
@@ -83,46 +93,52 @@ const { images } = Astro.props;
 </style>
 
 <script>
-  const carousel = document.querySelector<HTMLDivElement>('.carousel')!;
-  const images = carousel.querySelectorAll<HTMLImageElement>('.carousel-image');
-  const nextButton = carousel.querySelector<HTMLButtonElement>('button[data-direction="next"]')!;
-  const prevButton = carousel.querySelector<HTMLButtonElement>('button[data-direction="prev"]')!;
-  const dots = carousel.querySelectorAll<HTMLSpanElement>('.dot');
+  const carousels = document.querySelectorAll<HTMLDivElement>('.carousel')!;
+  carousels.forEach(carousel => {
+    const images = carousel.querySelectorAll<HTMLImageElement>('.carousel-image');
+    const nextButton = carousel.querySelector<HTMLButtonElement>('button[data-direction="next"]')!;
+    if (images.length === 0) nextButton.disabled = true;
+    const prevButton = carousel.querySelector<HTMLButtonElement>('button[data-direction="prev"]')!;
+    const dots = carousel.querySelectorAll<HTMLSpanElement>('.dot');
 
-  const updateClasses = (newIndex: number) => {
-    carousel.dataset.currentIndex = newIndex.toString();
-    images.forEach((img, i) => {
-      if (i < newIndex) {
-        img.classList.remove('right');
-        img.classList.add('left');
-      } else if (i === newIndex) {
-        img.classList.remove('right', 'left');
-      } else if (i > newIndex) {
-        img.classList.remove('left');
-        img.classList.add('right');
-      }
-    });
-    dots.forEach((dot, i) => (i === newIndex ? dot.classList.add('current') : dot.classList.remove('current')));
-  };
+    const updateClasses = (newIndex: number) => {
+      carousel.dataset.currentIndex = newIndex.toString();
+      images.forEach((img, i) => {
+        if (i < newIndex) {
+          img.classList.remove('right');
+          img.classList.add('left');
+        } else if (i === newIndex) {
+          img.classList.remove('right', 'left');
+        } else if (i > newIndex) {
+          img.classList.remove('left');
+          img.classList.add('right');
+        }
+      });
+      dots.forEach((dot, i) => (i === newIndex ? dot.classList.add('current') : dot.classList.remove('current')));
 
-  const nextImage = () => {
-    const currentIndex = Number(carousel.dataset.currentIndex);
-    if (currentIndex < images.length - 1) updateClasses(currentIndex + 1);
-  };
+      prevButton.disabled = newIndex === 0 ? true : false;
+      nextButton.disabled = newIndex === images.length - 1 ? true : false;
+    };
 
-  const prevImage = () => {
-    const currentIndex = Number(carousel.dataset.currentIndex);
-    if (currentIndex > 0) updateClasses(currentIndex - 1);
-  };
+    const nextImage = () => {
+      const currentIndex = Number(carousel.dataset.currentIndex);
+      if (currentIndex < images.length - 1) updateClasses(currentIndex + 1);
+    };
 
-  nextButton.addEventListener('click', nextImage);
-  prevButton.addEventListener('click', prevImage);
+    const prevImage = () => {
+      const currentIndex = Number(carousel.dataset.currentIndex);
+      if (currentIndex > 0) updateClasses(currentIndex - 1);
+    };
+
+    nextButton.addEventListener('click', nextImage);
+    prevButton.addEventListener('click', prevImage);
+  });
 </script>
 
 <div class="carousel" data-current-index="0">
   {images.map((img, i) => <img class={`carousel-image ${i === 0 ? '' : 'right'}`} src={img} loading="lazy" />)}
-  <button data-direction="prev" aria-label="previous image">{'<'}</button>
-  <button data-direction="next" aria-label="previous image">{'>'}</button>
+  <button data-direction="prev" aria-label="previous image" disabled>{'<'}</button>
+  <button data-direction="next" aria-label="next image">{'>'}</button>
   <div class="dots">
     {images.map((_, i) => <span data-index={i} class={i === 0 ? 'dot current' : 'dot'} />)}
   </div>
