@@ -3,6 +3,7 @@ id: spacex
 iconSrc: icons/spacexlogo.png
 title: SpaceX
 draft: true
+order: 3
 ---
 
 See the launch history of SpaceX.

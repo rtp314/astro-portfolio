@@ -3,6 +3,7 @@ id: social
 iconSrc: icons/letter-s-svgrepo-com.svg
 title: Social
 draft: true
+order: 1
 ---
 
 A simple social networking website, built using React and Firestore.

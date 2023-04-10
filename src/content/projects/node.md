@@ -3,6 +3,7 @@ id: node
 iconSrc: icons/lock-svgrepo-com.svg
 title: Auth Server
 draft: true
+order: 4
 ---
 
 A simple Node server which authenticates and authorises using JSON Web Tokens

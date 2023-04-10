@@ -3,6 +3,7 @@ id: rps
 iconSrc: icons/icon-scissors.svg
 title: R/P/S
 draft: true
+order: 5
 ---
 
 The classic game of Rock, Paper, Scissors, built using React and packaged with Vite

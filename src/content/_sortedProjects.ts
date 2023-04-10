@@ -1,10 +1,23 @@
-import { getCollection } from 'astro:content';
+import { CollectionEntry, getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
 
-const codepenProjects = projects.filter(el => el.data.codepen);
-const nonCodepenProjects = projects.filter(el => el.data.codepen !== true);
+const codepenProjects: CollectionEntry<'projects'>[] = [];
+const numberedProjects: CollectionEntry<'projects'>[] = [];
+const otherProjects: CollectionEntry<'projects'>[] = [];
 
-const sortedProjects = [...nonCodepenProjects, ...codepenProjects];
+projects.forEach(project => {
+  if (project.data.codepen) {
+    codepenProjects.push(project);
+  } else if (project.data.order) {
+    numberedProjects.push(project);
+  } else {
+    otherProjects.push(project);
+  }
+});
+
+numberedProjects.sort((a, b) => a.data.order! - b.data.order!);
+
+const sortedProjects = [...numberedProjects, ...otherProjects, ...codepenProjects];
 
 export default sortedProjects;
