@@ -167,10 +167,14 @@
   }
 
   .project-info {
-    padding: 1em;
+    padding: 0 !important;
   }
 
   .project-background-image {
     background-size: cover !important;
+  }
+
+  h3 {
+    text-align: center;
   }
 }
