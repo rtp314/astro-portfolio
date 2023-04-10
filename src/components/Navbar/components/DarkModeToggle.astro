@@ -105,6 +105,7 @@ import sunImg from '@icons/sun-svgrepo-com.svg';
 
 <script>
   const toggle = document.getElementById('dark-mode-toggle')!;
+  const label = document.getElementById('dark-mode-label')!;
   const checkbox = document.getElementById('dark-mode-checkbox')! as HTMLInputElement;
   const savedTheme = localStorage.getItem('theme');
 
@@ -119,14 +120,17 @@ import sunImg from '@icons/sun-svgrepo-com.svg';
     }
   }
 
-  toggle.addEventListener('click', () => {
+  const toggleDarkMode = () => {
     const isDarkMode = document.body.dataset?.theme === 'dark';
     checkbox.checked = isDarkMode;
     toggle.classList.toggle('active');
     const theme = isDarkMode ? 'light' : 'dark';
     document.body.dataset.theme = theme;
     localStorage.setItem('theme', theme);
-  });
+  };
+
+  toggle.addEventListener('click', toggleDarkMode);
+  label.addEventListener('click', toggleDarkMode);
 
   function setLightTheme() {
     document.body.dataset.theme = 'light';
@@ -143,7 +147,7 @@ import sunImg from '@icons/sun-svgrepo-com.svg';
 
 <div class="dark-mode-control">
   <div class="label-wrapper">
-    <label for="dark-mode-checkbox">Dark Mode</label>
+    <label id="dark-mode-label" for="dark-mode-checkbox">Dark Mode</label>
   </div>
   <input id="dark-mode-checkbox" type="checkbox" />
   <span id="dark-mode-toggle">
