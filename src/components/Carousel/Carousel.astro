@@ -1,0 +1,129 @@
+---
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<style lang="scss">
+  .carousel {
+    background-color: black;
+    min-height: 30rem;
+    height: 100%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    --color-faint: #fff3;
+    --color-strong: #eee;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 500ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #fff6;
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: min(20%, 5rem);
+    z-index: 10;
+    font-size: 2rem;
+
+    &:hover {
+      background-color: var(--color-faint);
+    }
+
+    &[data-direction='prev'] {
+      left: 0px;
+    }
+    &[data-direction='next'] {
+      right: 0px;
+    }
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    width: 100%;
+
+    & .dot {
+      display: inline-block;
+      background-color: var(--color-faint);
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+
+    & .current {
+      background-color: var(--color-strong);
+    }
+  }
+
+  .right {
+    transform: translateX(100%);
+  }
+
+  .left {
+    transform: translateX(-100%);
+  }
+</style>
+
+<script>
+  const carousel = document.querySelector<HTMLDivElement>('.carousel')!;
+  const images = carousel.querySelectorAll<HTMLImageElement>('.carousel-image');
+  const nextButton = carousel.querySelector<HTMLButtonElement>('button[data-direction="next"]')!;
+  const prevButton = carousel.querySelector<HTMLButtonElement>('button[data-direction="prev"]')!;
+  const dots = carousel.querySelectorAll<HTMLSpanElement>('.dot');
+
+  const updateClasses = (newIndex: number) => {
+    carousel.dataset.currentIndex = newIndex.toString();
+    images.forEach((img, i) => {
+      if (i < newIndex) {
+        img.classList.remove('right');
+        img.classList.add('left');
+      } else if (i === newIndex) {
+        img.classList.remove('right', 'left');
+      } else if (i > newIndex) {
+        img.classList.remove('left');
+        img.classList.add('right');
+      }
+    });
+    dots.forEach((dot, i) => (i === newIndex ? dot.classList.add('current') : dot.classList.remove('current')));
+  };
+
+  const nextImage = () => {
+    const currentIndex = Number(carousel.dataset.currentIndex);
+    if (currentIndex < images.length - 1) updateClasses(currentIndex + 1);
+  };
+
+  const prevImage = () => {
+    const currentIndex = Number(carousel.dataset.currentIndex);
+    if (currentIndex > 0) updateClasses(currentIndex - 1);
+  };
+
+  nextButton.addEventListener('click', nextImage);
+  prevButton.addEventListener('click', prevImage);
+</script>
+
+<div class="carousel" data-current-index="0">
+  {images.map((img, i) => <img class={`carousel-image ${i === 0 ? '' : 'right'}`} src={img} loading="lazy" />)}
+  <button data-direction="prev" aria-label="previous image">{'<'}</button>
+  <button data-direction="next" aria-label="previous image">{'>'}</button>
+  <div class="dots">
+    {images.map((_, i) => <span data-index={i} class={i === 0 ? 'dot current' : 'dot'} />)}
+  </div>
+</div>
